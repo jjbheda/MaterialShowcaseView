@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.shape.OvalShape;
+import uk.co.deanwild.materialshowcaseview.shape.RectangleShape;
 
 
 public class SimpleSingleExample extends AppCompatActivity implements View.OnClickListener {
@@ -47,9 +48,12 @@ public class SimpleSingleExample extends AppCompatActivity implements View.OnCli
     }
 
     private void presentShowcaseView(int withDelay) {
+        View view = findViewById(R.id.btn_show);
         new MaterialShowcaseView.Builder(this)
                 .setTarget(mButtonShow)
-                .setShape(new OvalShape())
+//                .setShape(new OvalShape())
+                .setShape(new RectangleShape(view.getWidth(),view.getHeight()))
+                .setShapePadding(10)
                 .setTitleText("Hello")
                 .setDismissText("GOT IT")
                 .setContentText("This is some amazing feature you should know about")

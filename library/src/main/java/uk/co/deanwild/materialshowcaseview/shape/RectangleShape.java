@@ -4,6 +4,7 @@ package uk.co.deanwild.materialshowcaseview.shape;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 
 import uk.co.deanwild.materialshowcaseview.target.Target;
 
@@ -51,12 +52,13 @@ public class RectangleShape implements Shape {
 
     @Override
     public void draw(Canvas canvas, Paint paint, int x, int y) {
-        if (!rect.isEmpty()) {
-            canvas.drawRect(
-                    rect.left + x - padding,
-                    rect.top + y - padding,
-                    rect.right + x + padding,
-                    rect.bottom + y + padding,
+        RectF rectF = new RectF( rect.left + x - padding,
+                rect.top + y - padding,
+                rect.right + x + padding,
+                rect.bottom + y + padding);
+        if (!rectF.isEmpty()) {
+            canvas.drawRoundRect(
+                    rectF, 30, 30,
                     paint
             );
         }
